@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sorting</title>
+    </head>
+
+<body style = "text-align: center; font-size: 25px;background-color: rgb(106, 206, 252);"> 
+    <h2>Hello, Enter 4 numbers here!</h2>
+        <p id="myprint"></p>
+
+        <button onclick="userInput()">Input your Numbers!</button>
+        
+        
+        <script>
+        var numbers = [];
+
+        function userInput() {
+        for(var i = 0; i < 4; i++){
+        var num = prompt("Enter a number 1 at a time, from 1-9 until prompts ask you 4 times:");
+        if (isNaN(num)) {
+            alert("Enter a number!");
+            --i; // reset the counter for amount of numbers entered
+        }
+        if( !isNaN(num)) {
+            if( num % 1 != 0){
+                alert("Enter a whole number!")
+                --i;  // reset the counter for amount of numbers entered
+            }else{
+                numbers.push(num);
+            }
+        }
+        }
+
+        numbers = bubbleSort(numbers);
+
+        document.getElementById("myprint").innerHTML = "Your sorted numbers are" + numbers;
+        //Sort the array and print numbers in inner html
+        function bubbleSort(numbers) {  
+            var length = numbers.length;
+            for (var i = (length - 1); i >= 0; i--) {
+                for (var j = (length - i); j > 0; j--) {
+                    if (numbers[j] < numbers[j - 1]) {
+                        var nmbr = numbers[j];
+                        numbers[j] = numbers[j - 1];
+                        numbers[j - 1] = nmbr;
+                    }
+                }
+            }
+            return numbers;
+        }
+        function searchInput() {
+
+        }
+        }
+        </script>
+
+</body>
+
+</html>
